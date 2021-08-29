@@ -5,3 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require "faker"
+Department.destroy_all
+Item.destroy_all
+10.times do
+  x = Faker::Verb.simple_present
+  y = Faker::Verb.ing_form
+  z = Faker::Verb.base
+  s = Department.create(name: "#{x} #{y} #{z}")
+  4.times do
+    s.items.create(name: Faker::Verb.simple_present)
+  end
+end
+puts "seeded #{Department.all.size} Departments"
+puts "first department name: #{Department.first.name}"
+puts "seeded #{Item.all.size} Items"
+puts "first item name: #{Department.first.items.first.name}"
+
+
