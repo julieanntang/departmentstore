@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_department
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show,:update,:edit,:destroy]
 
   def index
     render component: "Items", props:{department: @department, items: @department.items}
@@ -10,6 +10,23 @@ class ItemsController < ApplicationController
     # @department.items.find(params[:id])
     render json: @item
   end
+
+  def new
+    render component: "NewItem"
+  end
+
+  def create
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
 
   private
 

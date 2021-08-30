@@ -5,6 +5,7 @@ const Department = (props) => {
     <div>
       <h1>Department</h1>
       <p>{`${JSON.stringify(props.department)}`}</p>
+      <a href={`/`}>back to departments</a>
     </div>
   );
 };
