@@ -7,8 +7,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @department.items.find(params[:id])
-    render component: "Item", props:{department:@department, items: @department.items}
+    #@item = @department.items.find(params[:id])
+    render json: @item
   end
 
   def new
@@ -16,20 +16,20 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = @department.items.new(department_items_params)
+    @item = @department.items.new(item_params)
     if (@item.save)
-      redirect_to department_items_path
+      redirect_to department_items_path(@department.id)
     else
     end
   end
 
   def edit
-    render component: "EditItem"
+    render component: "EditItem", props:{department:@department, item:@item}
   end
 
   def update
-    if @department.items.update(department_items_params)
-      redirect_to department_items_path
+    if(@item.update(item_params))
+      redirect_to department_items_path(@department.id)
     else
     end
   end
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
 
   private
 
-  def department_items_params
+  def item_params
     params.require(:item).permit(:name)
   end
 
