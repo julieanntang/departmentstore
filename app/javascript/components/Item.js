@@ -4,7 +4,7 @@ const Item = (props) => {
   return (
     <div>
       <h1>Item</h1>
-      <p>{`${JSON.stringify(props.department.items)}`}</p>
+      <p>{`${JSON.stringify(props.department.item)}`}</p>
       <a href={`/departments/${department.id}/items`}>back to items</a>
     </div>
   );
